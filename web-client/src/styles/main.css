@@ -1,0 +1,27 @@
+@media screen and (min-width: 600px) {
+  * {
+    margin: 0px;
+    padding: 0px;
+    
+    font-family: sans-serif;
+  }
+  
+  body {
+    width: 100%;
+  
+    position: relative;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+  
+  a {
+    color: blue;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

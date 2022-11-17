@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: RAM Software Development Division
+  description: RAM Software Development Division playground
+  version: 1.0.0
+tags:
+  - name: Account
+paths:
+  /V1/users:
+    put:
+      tags: Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginPayload'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginUser'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginError'
+        500:
+          description: Internal server error
+    post:
+      tags:
+        - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterUserPayload'
+      responses:
+        200:
+          description: OK
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterUserError'
+        500:
+          description: Internal server error
+components:
+  schemas:
+    LoginPayload:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    RegisterUserPayload:
+      type: object
+      required:
+        - email
+        - password
+        - passwordConfirm
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        passwordConfirm:
+          type: string
+    LoginUser:
+      type: object
+      required:
+        - jwt
+        - user
+      properties:
+        jwt:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+    User:
+      type: object
+      required:
+        - id
+        - email
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+    LoginError:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    RegisterUserError:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        passwordConfirm:
+          type: string
+    UserError:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        passwordConfirm:
+          type: string
