@@ -9,7 +9,7 @@ Make sure that you have [an ssh-key set up](https://docs.github.com/en/authentic
 ```shell
 sudo apt update
 sudo apt upgrade
-sudo spt install npm
+sudo apt install npm
 git clone git@github.com:nimendoza/softdev-playground.git
 code softdev-playground
 ```
