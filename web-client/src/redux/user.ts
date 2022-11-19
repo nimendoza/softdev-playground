@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ServerAPI } from "types/openapi";
 
 import { UserConstants } from "types/UserConstants";
+import { AppConfig } from "utils/AppConfig";
+import { http, HttpResponse } from 'utils/http';
 
 export type UserState = {
   id: string;
@@ -9,12 +11,17 @@ export type UserState = {
 };
 
 class UserStateLoader {
-  loadState(): UserState {
+  async loadState(): Promise<UserState> {
     try {
       const json = localStorage.getItem(UserConstants.JSON);
+      const token = localStorage.getItem(UserConstants.Token);
 
-      if (json) {
-        return JSON.parse(json);
+      if (json && token) {
+        const payload: ServerAPI['LoginPayload'] = JSON.parse(json);
+        const res: HttpResponse<ServerAPI['LoginUser']> = await http.post(`${AppConfig.server}/V1/users/verify`, payload)
+        if (res.status == 200) {
+          return JSON.parse(json);
+        }
       }
     } catch (e) {}
     return this.initializeState();
