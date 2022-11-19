@@ -5,7 +5,7 @@ import { LoginModal, showLoginModal } from 'components/Modals/Login/Login';
 import { showSignupModal, SignupModal } from 'components/Modals/Signup/Signup';
 
 export const LoggedOutNavBar = () => (
-  <React.Fragment>
+  <div>
     <div className={`${Styles.navbar}`}>
       <div className={`${Styles.navbarReverse}`}>
         <button type='button' onClick={showLoginModal}>
@@ -18,5 +18,5 @@ export const LoggedOutNavBar = () => (
     </div>
     <LoginModal />
     <SignupModal />
-  </React.Fragment>
+  </div>
 );
