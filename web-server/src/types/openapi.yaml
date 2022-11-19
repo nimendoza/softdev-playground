@@ -6,28 +6,10 @@ info:
 tags:
   - name: Account
 paths:
-  /V1/users/verify:
-    post:
-      tags: Account
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LoginUser'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LoginUser'
-        400:
-          description: Bad request
-        500:
-          description: Internal server error
   /V1/users:
     put:
-      tags: Account
+      tags: 
+        - Account
       requestBody:
         content:
           application/json:
@@ -65,6 +47,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterUserError'
+        500:
+          description: Internal server error
+  /V1/users/verify:
+    post:
+      tags: 
+        - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginUser'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginUser'
+        400:
+          description: Bad request
         500:
           description: Internal server error
 components:
