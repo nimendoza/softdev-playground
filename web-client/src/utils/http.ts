@@ -1,15 +1,15 @@
 import axios, { AxiosResponse } from 'axios';
-import { UserConstants } from 'types/UserConstants';
 
 export const http = axios.create();
 
 http.interceptors.request.use((config) => {
-  const token = localStorage.getItem(UserConstants.Token);
-  if (token != null) {
+  const chit = localStorage.getItem(UserChit);
+  if (chit != null) {
     if (config.headers == null) {
       config.headers = {};
     }
-    config.headers.Authorization = token;
+    
+    config.headers.Authorization = chit;
   }
 
   return config;

@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ServerAPI } from "types/openapi";
-
-import { UserConstants } from "types/UserConstants";
-import { AppConfig } from "utils/AppConfig";
 import { http, HttpResponse } from 'utils/http';
 
 export type UserState = {
@@ -13,14 +10,14 @@ export type UserState = {
 class UserStateLoader {
   async loadState(): Promise<UserState> {
     try {
-      const json = localStorage.getItem(UserConstants.JSON);
-      const token = localStorage.getItem(UserConstants.Token);
+      const info = localStorage.getItem(UserInfo);
+      const chit = localStorage.getItem(UserChit);
 
-      if (json && token) {
-        const payload: ServerAPI['LoginPayload'] = JSON.parse(json);
-        const res: HttpResponse<ServerAPI['LoginUser']> = await http.post(`${AppConfig.server}/V1/users/verify`, payload)
+      if (info && chit) {
+        const payload: ServerAPI['LoginPayload'] = JSON.parse(info);
+        const res: HttpResponse<ServerAPI['LoginUser']> = await http.post(`${server}/V1/users/verify`, payload)
         if (res.status == 200) {
-          return JSON.parse(json);
+          return JSON.parse(info);
         }
       }
     } catch (e) {}
@@ -29,12 +26,12 @@ class UserStateLoader {
 
   saveState(state: UserState) {
     const json = JSON.stringify(state)
-    localStorage.setItem(UserConstants.JSON, json);
+    localStorage.setItem(UserInfo, json);
   }
 
   clearState() {
-    localStorage.removeItem(UserConstants.JSON);
-    localStorage.removeItem(UserConstants.Token);
+    localStorage.removeItem(UserInfo);
+    localStorage.removeItem(UserChit);
   }
 
   initializeState(): UserState {
@@ -57,8 +54,8 @@ export const userSlice = createSlice({
 
       userStateLoader.saveState(state);
     },
-    clear: (state) => {
-      state = userStateLoader.initializeState();
+    clear: (_state) => {
+      _state = userStateLoader.initializeState();
       userStateLoader.clearState();
     }
   }
