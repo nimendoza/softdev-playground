@@ -21,7 +21,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginUser'
+                $ref: '#/components/schemas/VerifiedUser'
         400:
           description: Bad request
           content:
@@ -57,14 +57,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginUser'
+              $ref: '#/components/schemas/VerifiedUser'
       responses:
         200:
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginUser'
+                $ref: '#/components/schemas/VerifiedUser'
         400:
           description: Bad request
         500:
@@ -76,6 +76,13 @@ components:
       required:
         - email
         - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    LoginError:
+      type: object
       properties:
         email:
           type: string
@@ -94,7 +101,16 @@ components:
           type: string
         passwordConfirm:
           type: string
-    LoginUser:
+    RegisterUserError:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        passwordConfirm:
+          type: string
+    VerifiedUser:
       type: object
       required:
         - jwt
@@ -113,22 +129,6 @@ components:
         id:
           type: string
         email:
-          type: string
-    LoginError:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-    RegisterUserError:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-        passwordConfirm:
           type: string
     UserError:
       type: object

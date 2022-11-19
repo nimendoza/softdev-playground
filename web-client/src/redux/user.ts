@@ -15,7 +15,7 @@ class UserStateLoader {
 
       if (info && chit) {
         const payload: ServerAPI['LoginPayload'] = JSON.parse(info);
-        const res: HttpResponse<ServerAPI['LoginUser']> = await http.post(`${server}/V1/users/verify`, payload)
+        const res: HttpResponse<ServerAPI['VerifiedUser']> = await http.post(`${server}/V1/users/verify`, payload)
         if (res.status == 200) {
           return JSON.parse(info);
         }

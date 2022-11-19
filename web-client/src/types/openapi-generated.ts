@@ -21,7 +21,7 @@ export interface paths {
         /** @description OK */
         200: {
           content: {
-            "application/json": components["schemas"]["LoginUser"];
+            "application/json": components["schemas"]["VerifiedUser"];
           };
         };
         /** @description Bad request */
@@ -67,7 +67,7 @@ export interface components {
       password: string;
       passwordConfirm: string;
     };
-    LoginUser: {
+    VerifiedUser: {
       jwt: string;
       user: components["schemas"]["User"];
     };
