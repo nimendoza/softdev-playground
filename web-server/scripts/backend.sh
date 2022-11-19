@@ -8,4 +8,4 @@ if ! which ts-node-dev > /dev/null ; then
     npm install
 fi
 
-npm run backend
+npx ts-node-dev --respawn src/index.ts

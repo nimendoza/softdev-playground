@@ -2,9 +2,6 @@
   "name": "ram-softdev",
   "version": "1.0.0",
   "description": "RAM Software Development Division playground",
-  "scripts": {
-    "backend": "ts-node-dev --respawn src/index.ts"
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
