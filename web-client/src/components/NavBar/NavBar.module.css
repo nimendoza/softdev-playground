@@ -1,0 +1,54 @@
+@media screen and (min-width: 600px) {
+  #navbar {
+    background-color: rgb(88, 133, 175);
+    opacity: 0.8;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    height: 60px;
+    
+    padding-left: 9%;
+
+    position: fixed;
+    top: 0px;
+    z-index: 1000;
+  }
+
+  .logo {
+    opacity: inherit;
+
+    display: inline-block;
+    width: 31px;
+    line-height: inherit;
+    white-space: nowrap;
+  }
+
+  ul.navlist {
+    list-style-type: none;
+
+    flex-flow: row nowrap;
+    display: inline-block;
+    padding-left: 10px;
+  }
+
+  ul.navlist > li {
+    display: inline-block;
+
+    height: inherit;
+    padding: 5px;
+
+    color: white;
+  }
+
+  ul.navlist > li > a {
+    color: white;
+    text-decoration: none;
+  }
+
+  ul.navlist > li > a:hover {
+    text-decoration: underline;
+  }
+}

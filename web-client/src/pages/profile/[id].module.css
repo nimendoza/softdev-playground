@@ -1,0 +1,16 @@
+@media screen and (min-width: 600px) {
+  #header {
+    background-image: url('../../../public/img/admin.jpg');
+    background-color: rgb(70, 69, 150);
+    background-blend-mode: lighten;
+
+    height: 300px;
+
+    padding: 100px;
+    padding-top: 100px;
+  }
+
+  #h1 {
+    width: 50%;
+  }
+}
