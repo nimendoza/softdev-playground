@@ -2,9 +2,6 @@
   "name": "ram-softdev",
   "version": "1.0.0",
   "description": "RAM Software Development Division playground",
-  "scripts": {
-    "frontend": "next dev"
-  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
