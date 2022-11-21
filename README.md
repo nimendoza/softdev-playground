@@ -27,7 +27,6 @@ code softdev-playground
 In the VSCode integrated terminal, run:
 
 ```shell
-npm run install
 npm run system
 ```
 
