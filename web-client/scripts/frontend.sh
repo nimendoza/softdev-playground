@@ -4,4 +4,4 @@ if ! which next > /dev/null ; then
     npm install
 fi
 
-npm run frontend
+npx next dev

@@ -1,8 +1,8 @@
 version: '3.3'
 
 services:
-  postgres:
-    container_name: postgres
+  ram-postgres:
+    container_name: ram-postgres
     image: postgres:14-bullseye
     restart: always
     env_file:
@@ -11,8 +11,8 @@ services:
       - 5432:5432
     volumes:
       - ./web-server/database/postgres:/var/lib/postgres/data/
-  backend:
-    container_name: backend
+  ram-backend:
+    container_name: ram-backend
     build: 
       context: ./web-server/
       dockerfile: dockerfile.backend
@@ -20,17 +20,17 @@ services:
     stdin_open: true
     tty: true
     depends_on:
-      - postgres
+      - ram-postgres
     links:
-      - postgres
+      - ram-postgres
     env_file:
       - .env
     ports:
       - 4000:4000
     volumes:
       - ./web-server/:/app/
-  frontend:
-    container_name: frontend
+  ram-frontend:
+    container_name: ram-frontend
     build:
       context: ./web-client/
       dockerfile: dockerfile.frontend
