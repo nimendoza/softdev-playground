@@ -27,8 +27,7 @@ code softdev-playground
 In the VSCode integrated terminal, run:
 
 ```shell
-npm run install
-npm run system
+npm run docker
 ```
 
 If everything runs fine (which I hope it does), you should be able to play around at [http://localhost:3000/](http://localhost:3000/).

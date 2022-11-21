@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "description": "PSHS-MC RAM '22-'23 Software division playground",
     "scripts": {
-        "system": "docker-compose --file docker-compose.yml up",
+        "frontend": "cd web-client && npx next dev",
+        "backend": "cd web-server && npx ts-node-dev --respawn src/index.ts",
+        "docker": "docker-compose --file docker-compose.yml up",
         "install": "cd web-client && npm install && cd ../web-server && npm install && cd ..",
         "backend:bash": "docker exec -it backend bash",
         "backend:seed": "docker exec backend sh -c 'npx ts-node /app/src/orm/seeds/seed-main.ts'",
