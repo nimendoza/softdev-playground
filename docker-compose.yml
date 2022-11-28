@@ -5,6 +5,8 @@ services:
     container_name: postgres
     image: postgres:14-bullseye
     restart: always
+    stdin_open: true
+    tty: true
     env_file:
       - .env
     ports:

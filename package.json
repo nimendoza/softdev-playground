@@ -12,6 +12,6 @@
         "migration:run": "docker exec backend sh -c 'npx ts-node /app/node_modules/typeorm/cli.js migration:run --dataSource /app/src/orm/data-source.ts'",
         "migration:revert": "docker exec backend sh -c 'npx ts-node /app/node_modules/typeorm/cli.js migration:revert --dataSource /app/src/orm/data-source.ts'",
         "openapi:generate": "docker exec backend sh -c 'web-server/scripts/generate-openapi.sh'",
-        "postgresql": "docker exec -t postgres sh -c 'PGPASSWORD=$POSTGRES_PASSWORD psql $POSTGRES_DB -U $POSTGRES_USER'"
+        "postgresql": "docker exec -it postgres sh -c 'PGPASSWORD=$POSTGRES_PASSWORD psql -d $POSTGRES_DB -U $POSTGRES_USER -W'"
     }
 }
